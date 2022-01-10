@@ -1,1 +1,1 @@
-This program aims to be able to respond a small set of questions regarding the contents of two recipies.
+This program aims to respond to a small set of questions regarding the contents of two food recipies using information extraction techniques.
