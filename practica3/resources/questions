@@ -1,0 +1,75 @@
+Ingredientes
+¿Hay una receta con/sin <ingrediente>? => <receta>/no
+¿Tiene alguna receta con <ingrediente>?
+¿Hay <ingrediente> en alguna receta?
+¿Qué ingredientes contiene <receta>? => <ingredientes>
+¿Cuáles son los ingredientes para hacer <receta>?
+¿Qué necesito para hacer <receta>?
+¿Cuál es la receta con menos/más ingredientes? => <receta>
+
+Origen
+¿De donde viene <receta>? => <origen>
+¿Qué orígen tiene <receta>?
+¿De qué parte del mundo es <receta>?
+¿Hay una receta de <lugar>? => <receta>/no
+¿Hay una receta que proviene de <lugar>?
+
+Tipo de comida
+¿Qué tipo de comida es <receta>? => <tipo de comida>
+¿Qué comida es <receta>?
+¿Qué tipo de plato es <receta>?
+¿Hay alguna receta de/con <tipo de comida>? => <receta>/no
+¿Hay algo de/con <tipo de comida>?
+
+Dificultad
+¿Cuál es la receta más fácil/difícil? => <receta>
+¿Qué difícil es <receta>? => <grado de dificultad>
+¿Qué dificultad es <receta>?
+¿Qué grado de dificultad tiene <receta>?
+
+Dieta especial
+¿Hay alguna receta <dieta>? => <receta>/no
+¿Hay alguna receta para <dieta>?
+¿Hay algo de/∅ <dieta>?
+¿Puedo comer/hacer <receta> si no como <dieta>/<ingrediente>? => sí/no
+
+Precio
+¿Qué grado de precio tiene la <receta>? => <grado precio>
+¿Cuánto cuesta <receta>?
+¿Cuanto vale <receta>?
+¿Gasta mucho la <receta>? => Si/No
+¿El precio de <receta> es alto?
+
+Tiempo de cocinar/preparar
+¿Cuánto tiempo necesita para <receta>? => <tiempo>
+¿Cuánto tarda en cocinar <receta> ?
+¿Cuánto dura la preparación de <receta>?
+¿Qué receta tiene menos tiempo para cocinar? => <receta>
+¿Cuál de las recetas requiere menos tiempo?
+¿Qué receta puedo cocinar dentro de <tiempo>? => <receta>
+¿Hay algo que puedo preparar dentro de <tiempo>?
+¿Cuál de las recetas se puede preparar dentro de <tiempo>?
+
+Herramientas de cocina
+¿Qué herramientas necesita para cocinar <receta>? =><herramienta>
+¿Cuáles son herramientas para cocinar <receta>?
+¿Qué utensilios necesita para cocinar <receta>?
+¿Se necesita <herramienta> para cocinar <receta>? => <Si/No>
+¿Es obligatorio <herramienta> para cocinar <receta>?
+¿Requiere <herramienta> para cocinar <receta>?
+
+Técnica
+¿Qué técnicas hay <receta>? => <tecnica>
+¿Qué técnicas requiere <receta>?
+¿Qué técnicas necesita <receta>?
+¿Es necesario <técnica> en el proceso de cocinar <receta>? => <Si/No>
+¿Hay que <técnica> en la preparación de <receta>?
+¿Necesito <técnica> en la preparación de <receta>?
+¿Qué receta requiere menos técnicas para cocinar? => <receta>
+¿Cuál de las recetas necesita menos técnicas?
+¿Qué receta necesita menos técnicas?
+
+Temporada
+¿Cuándo es la mejor temporada para comer <receta>? => <temporada>
+¿Qué momentos del año es mejor para comer <receta>?
+¿Puedo encontrar cualquier ingrediente de <receta> en cualquier estación del año? => Si/No
