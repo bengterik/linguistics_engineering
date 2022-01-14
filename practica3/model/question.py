@@ -4,17 +4,28 @@ class Question:
         self.domain = domain
         self.range = q_range
 
-    def answer(self, query, dimension, dimensions):
+    def answer(self, query, recetas):
         for r in recetas:
-            for d in dimensions.get_domain(dimension):
-                if query.contains(d):
-                    return "si"
+            for d in r.get_dimension(self.domain):
+                if d in query:
+                    return "Sí, la receta " + r.__str__() + " contiene " + d
+        return "No hay"
 
     def match(self, question):
+        palabras_query = set(question.strip('¿').strip('?').split(' '))
         for q in self.question_variants:
-            if q.equals(question):
-                return True, q
-        return False, q
+            palabras_pregunta = set(q.strip('¿').strip('?').split(' '))
+            diferencia = palabras_query.symmetric_difference(palabras_pregunta)
+            if len(diferencia) == 1:
+                return True, self
+        return False, self
 
     def __str__(self):
         return self.question_variants[0]
+
+    def palabra_clave(self, query, pregunta):
+        palabras_query = set(query.strip('¿').strip('?').split(' '))
+        palabras_pregunta = set(pregunta.strip('¿').strip('?').split(' '))
+        diferencia = palabras_query.symmetric_difference(palabras_pregunta)
+
+#palabras_query = set(querysplit(' '))

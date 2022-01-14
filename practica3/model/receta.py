@@ -13,31 +13,31 @@ class Receta:
         self.temporada=temporada
 
     def get_dimension(self, dimension):
-        if dimension.equals("ingredient"):
+        if dimension == "ingrediente":
             return self.ingrediente
-        elif dimension.equals("origin"):
+        elif dimension == "origin":
             return self.origin
-        elif dimension.equals("tipo"):
+        elif dimension == "tipo":
             return self.tipo
-        elif dimension.equals("dificultad"):
+        elif dimension == "dificultad":
             return self.dificultad
-        elif dimension.equals("dieta"):
+        elif dimension == "dieta":
             return self.dieta
-        elif dimension.equals("precio"):
+        elif dimension == "precio":
             return self.precio
-        elif dimension.equals("tiempo"):
+        elif dimension =="tiempo":
             return self.tiempo
-        elif dimension.equals("herramienta"):
+        elif dimension == "herramienta":
             return self.herramienta
-        elif dimension.equals("tecnica"):
+        elif dimension == "tecnica":
             return self.tecnica
-        elif dimension.equals("temporada"):
+        elif dimension == "temporada":
             return self.temporada
         else:
             return []
 
     def __str__(self):
-        return self.nombre
+        return self.nombre[0]
 
     def get_recipe(self, value):
         return ""
