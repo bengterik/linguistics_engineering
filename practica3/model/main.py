@@ -5,10 +5,11 @@ import question
 
 
 def cargar_recetas():
-    files = os.listdir('/home/bengterik/git/linguistics_engineering/practica3/dimensiones/')
+    files = os.listdir(
+        'c:/master_AI/linguistics_engineering/practica3/dimensiones/')
     recetas = []
     for filename in files:
-        with open('/home/bengterik/git/linguistics_engineering/practica3/dimensiones/' + filename) as f:
+        with open('c:/master_AI/linguistics_engineering/practica3/dimensiones/' + filename) as f:
             lines = f.readlines()
         cleaned_lines = [[l1.strip() for l1 in l.split(',')] for l in lines]
 
@@ -27,11 +28,12 @@ def cargar_recetas():
 
 
 def cargar_preguntas():
-    files = os.listdir('/home/bengterik/git/linguistics_engineering/practica3/preguntas/')
+    files = os.listdir(
+        'c:/master_AI/linguistics_engineering/practica3/preguntas/')
     preguntas = []
 
     for filename in files:
-        with open('/home/bengterik/git/linguistics_engineering/practica3/preguntas/' + filename) as f:
+        with open('c:/master_AI/linguistics_engineering/practica3/preguntas/' + filename) as f:
             lines2 = f.readlines()
 
         variants = [line.strip('\n') for line in lines2][1:]
@@ -47,9 +49,9 @@ if __name__ == '__main__':
     preguntas = cargar_preguntas()
 
     exit_loop = False
-    print("Bienvenido, aquí puede preguntar sobre sobre recetas")
+    print("Bienvenido, aquí puede preguntar sobre sobre recetas!\n")
     while not exit_loop:
-        respuesta="No hay respuesta por esa pregunta"
+        respuesta = "No hay respuesta por esa pregunta"
         query = input("Ponga tu pregunta>")
         for p in preguntas:
             match, pregunta = p.match(query)
@@ -67,5 +69,3 @@ if __name__ == '__main__':
 
     print(salteado_de_carne)
 """
-
-

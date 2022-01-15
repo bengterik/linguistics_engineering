@@ -1,22 +1,22 @@
 class Receta:
     def __init__(self, nombre, ingrediente, origen, tipo, dificultad, dieta, precio, tiempo, herramienta, tecnica, temporada):
-        self.nombre=nombre
-        self.ingrediente=ingrediente
-        self.origin=origen
-        self.tipo=tipo
-        self.dificultad=dificultad
-        self.dieta=dieta
-        self.precio=precio
-        self.tiempo=tiempo
-        self.herramienta=herramienta
-        self.tecnica=tecnica
-        self.temporada=temporada
+        self.nombre = nombre
+        self.ingrediente = ingrediente
+        self.origen = origen
+        self.tipo = tipo
+        self.dificultad = dificultad
+        self.dieta = dieta
+        self.precio = precio
+        self.tiempo = tiempo
+        self.herramienta = herramienta
+        self.tecnica = tecnica
+        self.temporada = temporada
 
     def get_dimension(self, dimension):
         if dimension == "ingrediente":
             return self.ingrediente
-        elif dimension == "origin":
-            return self.origin
+        elif dimension == "origen":
+            return self.origen
         elif dimension == "tipo":
             return self.tipo
         elif dimension == "dificultad":
@@ -25,7 +25,7 @@ class Receta:
             return self.dieta
         elif dimension == "precio":
             return self.precio
-        elif dimension =="tiempo":
+        elif dimension == "tiempo":
             return self.tiempo
         elif dimension == "herramienta":
             return self.herramienta

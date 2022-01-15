@@ -1,3 +1,6 @@
+from xml import dom
+
+
 def flatten(t):
     return [item for sublist in t for item in sublist]
 
@@ -21,17 +24,28 @@ class Question:
             for d in r.get_dimension(self.domain):
                 domain_wordset = set(d.split(' '))
                 if palabras_claves == domain_wordset:
-                    respuestas.append("Receta: " + r.__str__() + "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
+                    respuestas.append(
+                        "Receta: " + r.__str__() + "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
 
         if not respuestas:
-            respuestas = [("No se ha podido encontrar ninguna receta con las palabras de busqueda: " + palabras_claves.__str__().strip('{}'))]
+            respuestas = [("No se ha podido encontrar ninguna receta con las palabras de busqueda: " +
+                           palabras_claves.__str__().strip('{}'))]
 
-        return '\n--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
+        return '--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
 
-    def sacar_dimension(self, query, recetas):
+    def sacar_dimension(self, query, recetas, palabras_claves):
+        respuestas = []
+        for r in recetas:
+            domain_wordset = set(r.__str__().split(' '))
+            if (palabras_claves-domain_wordset == set()):
+                respuestas.append(
+                    self.q_range.capitalize() + ": " + str(r.get_dimension(self.q_range)).strip('[]') +
+                    "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
 
-        return ""
-
+        if not respuestas:
+            respuestas = [("No se ha podido encontrar ninguna receta con las palabras de busqueda: " +
+                           palabras_claves.__str__().strip('{}'))]
+        return '--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
 
     def match(self, query):
         """Para ver si la pregunta es un 'match' se subtrae las palabras del query de la pregunta,
@@ -44,13 +58,12 @@ class Question:
                 return True, self
         return False, self
 
-
     def __str__(self):
         return self.question_variants[0]
 
     def palabras_claves(self, query):
         "Todos las palabras de las preguntas son subtraidas del query"
         palabras_query = set(query.strip('¿?').split(' '))
-        palabras_preguntas = set(flatten([pregunta.strip('¿?').split(' ') for pregunta in self.question_variants]))
+        palabras_preguntas = set(flatten(
+            [pregunta.strip('¿?').split(' ') for pregunta in self.question_variants]))
         return palabras_query.difference(palabras_preguntas)
-
