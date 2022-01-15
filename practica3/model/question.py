@@ -9,23 +9,27 @@ class Question:
         self.q_range = q_range
 
     def responder(self, query, recetas):
-        palabra_clave = self.palabra_clave(query)
+        palabras_claves = self.palabras_claves(query)
         if self.q_range == "receta":
-            return self.sacar_receta(query,recetas, palabra_clave)
+            return self.sacar_receta(query, recetas, palabras_claves)
         else:
-            return self.sacar_dimension(query,recetas, palabra_clave)
+            return self.sacar_dimension(query, recetas, palabras_claves)
 
-    def sacar_receta(self, query, recetas, palabra_clave):
+    def sacar_receta(self, query, recetas, palabras_claves):
+        respuestas = []
         for r in recetas:
             for d in r.get_dimension(self.domain):
-                if palabra_clave in d:
-                    return \
-                        "Receta: " +r.__str__() + "\nPalabra clave: " + palabra_clave
-        return "No ha encontrado una receta"
+                domain_wordset = set(d.split(' '))
+                if palabras_claves == domain_wordset:
+                    respuestas.append("Receta: " + r.__str__() + "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
+
+        if not respuestas:
+            respuestas = [("No se ha podido encontrar ninguna receta con las palabras de busqueda: " + palabras_claves.__str__().strip('{}'))]
+
+        return '\n--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
 
     def sacar_dimension(self, query, recetas):
-        #receta = recetas.
-        #dimension = r.get_dimension(self.domain)
+
         return ""
 
 
@@ -43,12 +47,9 @@ class Question:
     def __str__(self):
         return self.question_variants[0]
 
-    def palabra_clave(self, query):
+    def palabras_claves(self, query):
         "Todos las palabras de las preguntas son subtraidas del query"
         palabras_query = set(query.strip('¿?').split(' '))
         palabras_preguntas = set(flatten([pregunta.strip('¿?').split(' ') for pregunta in self.question_variants]))
-        return next(iter(palabras_query.difference(palabras_preguntas)))
-
-
-
+        return palabras_query.difference(palabras_preguntas)
 
