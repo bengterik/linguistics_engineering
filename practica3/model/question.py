@@ -23,7 +23,7 @@ class Question:
         for r in recetas:
             for d in r.get_dimension(self.domain):
                 domain_wordset = set(d.split(' '))
-                if palabras_claves == domain_wordset:
+                if (palabras_claves-domain_wordset == set()):
                     respuestas.append(
                         "Receta: " + r.__str__() + "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
 
@@ -37,6 +37,9 @@ class Question:
         respuestas = []
         for r in recetas:
             domain_wordset = set(r.__str__().split(' '))
+            # print(domain_wordset)
+            # print(palabras_claves)
+            # print(palabras_claves-domain_wordset)
             if (palabras_claves-domain_wordset == set()):
                 respuestas.append(
                     self.q_range.capitalize() + ": " + str(r.get_dimension(self.q_range)).strip('[]') +

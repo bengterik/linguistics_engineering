@@ -5,7 +5,7 @@ Ingredientes
 ¿Qué ingredientes contiene <receta>? => <ingredientes>
 ¿Cuáles son los ingredientes para hacer <receta>?
 ¿Qué necesito para hacer <receta>?
-¿Cuál es la receta con menos/más ingredientes? => <receta>
+¿Cuál es la receta con menos/más ingredientes? => <receta>------------------
 
 Origen
 ¿De donde viene <receta>? => <origen>
