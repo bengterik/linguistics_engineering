@@ -38,9 +38,7 @@ def cargar_preguntas():
         dom_range = lines2[0].split('-')
         domain = dom_range[0].strip('\n')
         range = dom_range[1].strip('\n')
-        print(range)
         preguntas.append(question.Question(variants, domain, range))
-
     return preguntas
 
 
