@@ -44,6 +44,7 @@ class Question:
                 return True, self
         return False, self
 
+
     def __str__(self):
         return self.question_variants[0]
 
