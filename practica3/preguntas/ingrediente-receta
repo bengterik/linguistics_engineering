@@ -1,4 +1,4 @@
 ingrediente-receta
-¿Hay una receta con?
-¿Tiene alguna receta con?
-¿Hay en alguna receta?
+¿Hay una receta con <ingrediente>?
+¿Tiene alguna receta con <ingrediente>?
+¿Hay en alguna receta <ingrediente>?

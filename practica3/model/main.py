@@ -38,6 +38,7 @@ def cargar_preguntas():
         dom_range = lines2[0].split('-')
         domain = dom_range[0].strip('\n')
         range = dom_range[1].strip('\n')
+        print(range)
         preguntas.append(question.Question(variants, domain, range))
 
     return preguntas
@@ -55,7 +56,7 @@ if __name__ == '__main__':
         for p in preguntas:
             match, pregunta = p.match(query)
             if match:
-                respuesta = pregunta.answer(query, recetas)
+                respuesta = pregunta.responder(query, recetas)
         print(respuesta)
     "¿Hay una receta con <ingrediente>?     ingrediente->receta"
     "¿Hay una receta con carne?"
