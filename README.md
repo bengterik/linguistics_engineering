@@ -1,1 +1,1 @@
-This program aims to respond to a small set of questions regarding the contents of two food recipies using information extraction techniques.
+This program aims to construct a system that responds questions about an information domain, in our case consisting of food recipies. We apologize in advance for the "spanglish" naming scheme..
