@@ -6,10 +6,10 @@ import question
 
 def cargar_recetas():
     files = os.listdir(
-        'c:/master_AI/linguistics_engineering/practica3/dimensiones/')
+        '/home/bengterik/git/linguistics_engineering/practica3/dimensiones/')
     recetas = []
     for filename in files:
-        with open('c:/master_AI/linguistics_engineering/practica3/dimensiones/' + filename) as f:
+        with open('/home/bengterik/git/linguistics_engineering/practica3/dimensiones/' + filename) as f:
             lines = f.readlines()
         cleaned_lines = [[l1.strip() for l1 in l.split(',')] for l in lines]
 
@@ -29,11 +29,11 @@ def cargar_recetas():
 
 def cargar_preguntas():
     files = os.listdir(
-        'c:/master_AI/linguistics_engineering/practica3/preguntas/')
+        '/home/bengterik/git/linguistics_engineering/practica3/preguntas/')
     preguntas = []
 
     for filename in files:
-        with open('c:/master_AI/linguistics_engineering/practica3/preguntas/' + filename) as f:
+        with open('/home/bengterik/git/linguistics_engineering/practica3/preguntas/' + filename) as f:
             lines2 = f.readlines()
 
         variants = [line.strip('\n') for line in lines2][1:]
@@ -58,14 +58,3 @@ if __name__ == '__main__':
             if match:
                 respuesta = pregunta.responder(query, recetas)
         print(respuesta)
-    "¿Hay una receta con <ingrediente>?     ingrediente->receta"
-    "¿Hay una receta con carne?"
-
-    """
-    for recipe in recipes:
-        salteado_de_carne.<dominio>("<ingrediente>")
-        salteado_de_carne.ingrediente
-        salteado_de_carne.origen("<origen")
-
-    print(salteado_de_carne)
-"""

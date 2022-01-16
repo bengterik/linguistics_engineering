@@ -15,8 +15,16 @@ class Question:
         palabras_claves = self.palabras_claves(query)
         if self.q_range == "receta":
             return self.sacar_receta(query, recetas, palabras_claves)
+        elif self.q_range == "nombre":
+            return self.sacar_recetas(recetas)
         else:
             return self.sacar_dimension(query, recetas, palabras_claves)
+
+    def sacar_recetas(self, recetas):
+        respuestas = []
+        for r in recetas:
+            respuestas.append("Receta: " + r.__str__())
+        return '\n'.join(respuestas)
 
     def sacar_receta(self, query, recetas, palabras_claves):
         respuestas = []
@@ -70,3 +78,5 @@ class Question:
         palabras_preguntas = set(flatten(
             [pregunta.strip('¿?').split(' ') for pregunta in self.question_variants]))
         return palabras_query.difference(palabras_preguntas)
+
+
