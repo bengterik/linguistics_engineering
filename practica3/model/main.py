@@ -51,10 +51,23 @@ if __name__ == '__main__':
     exit_loop = False
     print("Bienvenido, aquí puede preguntar sobre sobre recetas!\n")
     while not exit_loop:
-        respuesta = "No hay respuesta por esa pregunta"
+        respuesta = '--------------------------------\n' + "No hay respuesta por esa pregunta" + '\n--------------------------------\n'
         query = input("Ponga tu pregunta>")
         for p in preguntas:
             match, pregunta = p.match(query)
             if match:
                 respuesta = pregunta.responder(query, recetas)
+                break
+
         print(respuesta)
+        if not match:
+            preg_prepuestas = []
+            for q in preguntas:
+                preg_prepuestas.append((q.similaridad(query), q.__str__().strip('<>')))
+            similaridad = sorted(preg_prepuestas, key=lambda x: x[0], reverse=True)
+            print(f"""Las preguntas más similares a la hecha son:
+          1. {similaridad[0][1]}
+          2. {similaridad[1][1]}
+          3. {similaridad[2][1]}
+                          """
+                  )

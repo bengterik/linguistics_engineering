@@ -1,5 +1,8 @@
 from xml import dom
+from difflib import SequenceMatcher
 
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
 
 def flatten(t):
     return [item for sublist in t for item in sublist]
@@ -24,7 +27,7 @@ class Question:
         respuestas = []
         for r in recetas:
             respuestas.append("Receta: " + r.__str__())
-        return '\n'.join(respuestas)
+        return '--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
 
     def sacar_receta(self, query, recetas, palabras_claves):
         respuestas = []
@@ -79,4 +82,9 @@ class Question:
             [pregunta.strip('¿?').split(' ') for pregunta in self.question_variants]))
         return palabras_query.difference(palabras_preguntas)
 
+    def similaridad(self, query):
+       preg_sim = []
+       for q in self.question_variants:
+           preg_sim.append((similar(query,q), q))
+       return sorted(preg_sim, key=lambda x: x[0], reverse=True)[0]
 
