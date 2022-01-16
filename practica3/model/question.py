@@ -28,7 +28,7 @@ class Question:
         respuestas = []
         for r in recetas:
             respuestas.append("Receta: " + r.__str__())
-        return '--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
+        return '\nRecetas: \n--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
 
     def sacar_receta(self, query, recetas, palabras_claves):
         respuestas = []
@@ -37,7 +37,9 @@ class Question:
                 domain_wordset = set(self.formatear(d).split(' '))
                 if (palabras_claves-domain_wordset == set()):
                     respuestas.append(
-                        "Receta: " + r.__str__() + "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
+                        "Receta: " + r.__str__() +
+                        "\nDominio: " + self.domain +
+                        "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
 
         if not respuestas:
             respuestas = [("No se ha podido encontrar ninguna receta con las palabras de busqueda: " +
@@ -48,10 +50,10 @@ class Question:
     def sacar_dimension(self, query, recetas, palabras_claves):
         respuestas = []
         for r in recetas:
-            print(self.domain)
             domain_wordset = set(flatten([self.formatear(s).split(' ') for s in r.get_dimension(self.domain)]))
             if (palabras_claves-domain_wordset == set()):
                 respuestas.append(
+                    r.__str__() + "\n" +
                     self.q_range.capitalize() + ": " + str(r.get_dimension(self.q_range)).strip('[]') +
                     "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
 
