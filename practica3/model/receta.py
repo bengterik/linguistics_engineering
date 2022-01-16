@@ -13,7 +13,7 @@ class Receta:
         self.temporada = temporada
 
     def get_dimension(self, dimension):
-        if dimension == "nombre":
+        if dimension == "receta":
             return self.nombre
         elif dimension == "ingrediente":
             return self.ingrediente

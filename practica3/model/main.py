@@ -51,7 +51,7 @@ if __name__ == '__main__':
     exit_loop = False
     print("Bienvenido, aquí puede preguntar sobre sobre recetas!\n")
     while not exit_loop:
-        respuesta = '--------------------------------\n' + "No hay respuesta por esa pregunta" + '\n--------------------------------\n'
+        respuesta = '--------------------------------\n' + "El sistema no ha entendido su pregunta" + '\n--------------------------------\n'
         query = input("Ponga tu pregunta>")
         for p in preguntas:
             match, pregunta = p.match(query)

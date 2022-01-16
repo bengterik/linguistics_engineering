@@ -1,5 +1,6 @@
 from xml import dom
 from difflib import SequenceMatcher
+import unidecode
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
@@ -33,7 +34,7 @@ class Question:
         respuestas = []
         for r in recetas:
             for d in r.get_dimension(self.domain):
-                domain_wordset = set(d.split(' '))
+                domain_wordset = set(self.formatear(d).split(' '))
                 if (palabras_claves-domain_wordset == set()):
                     respuestas.append(
                         "Receta: " + r.__str__() + "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
@@ -47,10 +48,8 @@ class Question:
     def sacar_dimension(self, query, recetas, palabras_claves):
         respuestas = []
         for r in recetas:
-            domain_wordset = set(r.__str__().split(' '))
-            # print(domain_wordset)
-            # print(palabras_claves)
-            # print(palabras_claves-domain_wordset)
+            print(self.domain)
+            domain_wordset = set(flatten([self.formatear(s).split(' ') for s in r.get_dimension(self.domain)]))
             if (palabras_claves-domain_wordset == set()):
                 respuestas.append(
                     self.q_range.capitalize() + ": " + str(r.get_dimension(self.q_range)).strip('[]') +
@@ -64,9 +63,9 @@ class Question:
     def match(self, query):
         """Para ver si la pregunta es un 'match' se subtrae las palabras del query de la pregunta,
         y si solo queda una palabra de la pregunta se asumen corresponder"""
-        palabras_query = set(query.strip('¿?').split(' '))
+        palabras_query = set(self.formatear(query).split(' '))
         for pregunta in self.question_variants:
-            palabras_pregunta = set(pregunta.strip('¿?').split(' '))
+            palabras_pregunta = set(self.formatear(pregunta).split(' '))
             diferencia = palabras_pregunta.difference(palabras_query)
             if len(diferencia) == 1:
                 return True, self
@@ -77,9 +76,9 @@ class Question:
 
     def palabras_claves(self, query):
         "Todos las palabras de las preguntas son subtraidas del query"
-        palabras_query = set(query.strip('¿?').split(' '))
+        palabras_query = set(self.formatear(query).split(' '))
         palabras_preguntas = set(flatten(
-            [pregunta.strip('¿?').split(' ') for pregunta in self.question_variants]))
+            [self.formatear(pregunta).split(' ') for pregunta in self.question_variants]))
         return palabras_query.difference(palabras_preguntas)
 
     def similaridad(self, query):
@@ -88,3 +87,7 @@ class Question:
            preg_sim.append((similar(query,q), q))
        return sorted(preg_sim, key=lambda x: x[0], reverse=True)[0]
 
+
+    def formatear(self, pregunta):
+        respuesta=unidecode.unidecode(pregunta).strip('¿?').lower()
+        return respuesta
