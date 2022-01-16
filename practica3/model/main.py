@@ -48,9 +48,26 @@ if __name__ == '__main__':
     recetas = cargar_recetas()
     preguntas = cargar_preguntas()
 
-    exit_loop = False
-    print("Bienvenido, aquí puede preguntar sobre sobre recetas!\n")
-    while not exit_loop:
+    exit_start_loop = False
+    exit_question_loop = False
+
+    print("\nBienvenido, aquí se puede hacer preguntas sobre recetas!")
+    while not exit_start_loop:
+        print("""\nA comenzar, coga uno de las siguientes opciones y pulse ENTER: 
+        1. ver las recetas que son cargadas al programa
+        2. ver las preguntas que puede contestar el programa
+        3. empezar a preguntar
+        """)
+        query = input(">")
+
+        if query == "1":
+            print('\n' + '\n'.join([r.__str__() for r in recetas]))
+        elif query == "2":
+            print('\n' + '\n'.join([r.__str__() for r in preguntas]))
+        else:
+            exit_start_loop=True
+
+    while not exit_question_loop:
         respuesta = '--------------------------------\n' + "El sistema no ha entendido su pregunta" + '\n--------------------------------\n'
         query = input("Ponga tu pregunta>")
         for p in preguntas:

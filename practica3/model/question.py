@@ -27,7 +27,7 @@ class Question:
     def sacar_recetas(self, recetas):
         respuestas = []
         for r in recetas:
-            respuestas.append("Receta: " + r.__str__())
+            respuestas.append(r.__str__())
         return '\nRecetas: \n--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
 
     def sacar_receta(self, query, recetas, palabras_claves):
