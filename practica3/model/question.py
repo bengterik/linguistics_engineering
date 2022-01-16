@@ -42,7 +42,7 @@ class Question:
                         "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
 
         if not respuestas:
-            respuestas = [("No se ha podido encontrar ninguna receta con las palabras de busqueda: " +
+            respuestas = [("No se ha encontrado una receta con las palabras de busqueda: " +
                            palabras_claves.__str__().strip('{}'))]
 
         return '--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
@@ -58,7 +58,7 @@ class Question:
                     "\nPalabra(s) de busqueda: " + palabras_claves.__str__().strip('{}'))
 
         if not respuestas:
-            respuestas = [("No se ha podido encontrar ninguna receta con las palabras de busqueda: " +
+            respuestas = [("No se ha encontrado una receta con las palabras de busqueda: " +
                            palabras_claves.__str__().strip('{}'))]
         return '--------------------------------\n' + '\n-------------------------------- \n'.join(respuestas) + '\n--------------------------------\n'
 
